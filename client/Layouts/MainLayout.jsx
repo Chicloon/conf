@@ -7,23 +7,6 @@ export const MainLayout = ({content}) => (
 
         <header className="header">
             <h1 className="main-header">Do It Now!</h1>
-            <ul className="header-subnav">
-                <li>
-                    <a href="#" className="is-active">Home</a>
-                </li>
-                <li>
-                    <a href="#" className> Register {Session.get('currentPage')}</a>
-                </li>
-                <li>
-                    <a href="#" >Abstracts</a>
-                </li>
-                <li>
-                  <a href="#" >Program</a>
-                </li>
-                <li>
-                    <a href="#" >About</a>
-                </li>
-            </ul>
             <Navigation />
         </header>
 

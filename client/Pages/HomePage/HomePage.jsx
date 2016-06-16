@@ -4,7 +4,6 @@ import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
 export default class HomePage extends TrackerReact(React.Component) {
   render() {
-    console.log(this.props.test);
     return (
       <h1> Hello</h1>
     )
