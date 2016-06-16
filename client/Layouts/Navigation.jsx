@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
+import AccountsUI from './AccountsUI.jsx';
 
 export default class Navigation extends Component {
   componentDidMount(){
-
-
   }
 
   checkCurrentPage(page) {
@@ -18,6 +17,7 @@ export default class Navigation extends Component {
 
   render(){
     return (
+      
       <ul className="header-subnav">
           <li>
               <a href="/" className={this.checkCurrentPage('HomePage') ? 'is-active':''}>Home</a>
@@ -33,6 +33,9 @@ export default class Navigation extends Component {
           </li>
           <li>
               <a href="/About" className={this.checkCurrentPage('About') ? 'is-active':''}>About</a>
+          </li>
+          <li>
+            <AccountsUI />
           </li>
         </ul>
     )
