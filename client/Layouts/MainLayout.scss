@@ -1,3 +1,4 @@
+
 .header {
   text-align: center;
   background: url('https://static.pexels.com/photos/6894/summer-photographer-pier-adventure-large.jpg') no-repeat center center;
@@ -19,6 +20,12 @@
   li {
     float: none;
     display: inline-block;
+
+    #login-dropdown-list{
+      a{
+        color: black
+      }
+    }
 
     a {
       padding: 0.9rem 1rem 0.75rem;

@@ -13,6 +13,6 @@ export default class AccountsUI extends Component {
   }
 
   render(){
-    return <span className="login-form" ref="container" />
+    return <span ref="container" />
   }
 }
