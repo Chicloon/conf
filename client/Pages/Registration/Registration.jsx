@@ -14,22 +14,24 @@ export default class Registration extends Component {
     }
 
   participants(){
-    console.log(Participants.find().fetch());
-    console.log(Participants.find());
+    // console.log(Participants.find().fetch());
+    console.log('test');
+    // console.log(Participants.find());
     return Participants.find().fetch();
   }
 
-  // componentWillMount() {
-  //   console.log('this is willMount');
-  //   console.log(Meteor.user());
-  //   this.state = {
-  //     currentUser: Meteor.user()
-  //   };
-  //   console.log(this.state.currentUser);
-  // }
-  // componentWillUnmount() {
-  //   this.state.subscription.userEmail.stop();
-  // }
+  componentWillMount() {
+    console.log('this is willMount');
+    console.log('Meteor user', Meteor.user());
+    console.log('Participants', this.participants());
+    this.state = {
+      currentUser: Meteor.user()
+    };
+    console.log('this state currentUser', this.state.currentUser);
+  }
+  componentWillUnmount() {
+    this.state.subscription.userEmail.stop();
+  }
 
 
   addAbstract(event){
@@ -42,11 +44,11 @@ export default class Registration extends Component {
       abstract : this.refs.abstract.value,
       organization : this.refs.organization.value,
     };
-    console.log (participant);
-    console.log(Meteor.userId());
-    console.log (Meteor.user().emails[0].address);
-    Participants.insert(participant);
-    // Meteor.call('addParticipant', participant)
+    // console.log (participant);
+    // console.log(Meteor.userId());
+    // console.log (Meteor.user().emails[0].address);
+    // Participants.insert(participant);
+    Meteor.call('addParticipant', participant)
   }
 
 
@@ -57,7 +59,7 @@ export default class Registration extends Component {
       };
 
       // console.log (this.state.currentUser);
-      console.log(this.participants());
+      // console.log(this.participants());
         return (
             <div>
               <div className="grid-block">
