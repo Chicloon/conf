@@ -3,11 +3,13 @@ import * as express from "express";
 import { join } from "path";
 import * as favicon from "serve-favicon";
 import { json, urlencoded } from "body-parser";
+import * as mongoose from "mongoose";
 
 import { loginRouter } from "./routes/login";
 import { protectedRouter } from "./routes/protected";
 
 const app: express.Application = express();
+mongoose.connect('localhost:27017/conf');
 app.disable("x-powered-by");
 
 app.use(favicon(join(__dirname, "../public", "favicon.ico")));
