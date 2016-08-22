@@ -4,23 +4,26 @@ import { join } from "path";
 import * as favicon from "serve-favicon";
 import { json, urlencoded } from "body-parser";
 import * as mongoose from "mongoose";
+ 
 
 import { loginRouter } from "./routes/login";
 import { protectedRouter } from "./routes/protected";
+import { userRouter } from './routes/mongo';
 
 const app: express.Application = express();
 mongoose.connect('localhost:27017/conf');
-app.disable("x-powered-by");
+// app.disable("x-powered-by");
 
 app.use(favicon(join(__dirname, "../public", "favicon.ico")));
 app.use(express.static(join(__dirname, '../public')));
 
 app.use(json());
-app.use(urlencoded({ extended: true }));
+app.use(urlencoded({ extended: false }));
 
 // api routes
-app.use("/api", protectedRouter);
-app.use("/login", loginRouter);
+app.use("/mongo", userRouter);
+// app.use("/api", protectedRouter);
+// app.use("/login", loginRouter);
 
 app.use('/client', express.static(join(__dirname, '../client')));
 
