@@ -15,12 +15,14 @@ abstractsRouter.get('/', function (req: Request, res: Response, next: NextFuncti
                 error: err
             });
         }
-        if (docs === null) {
-            console.log('No entries found. Adding starter entie');
+
+        if (!docs[0]) {
+            console.log('No entries found. Adding starter entry');
             let abstract = new Abstract({
                 title: "This is a Titile of abstract",
                 content: "This is a content of Abstract",
-                createdAt: new Date()
+                createdAt: new Date(),
+                // createdBy: 'Dummy User'
             });            
             abstract.save(function (err, result) {
                 if (err) {
@@ -32,11 +34,14 @@ abstractsRouter.get('/', function (req: Request, res: Response, next: NextFuncti
                 res.status(201).json({
                     message: 'Saved message',
                     obj: result
-                });
-               console.log(abstract); 
+                });                
             });
-        }
-        console.log('Entries found');
+        } else {
+            console.log('Entries found');
+            res.status(201).json({
+                    message: 'Documents found',
+                    obj: docs
+                });
 
     });
 

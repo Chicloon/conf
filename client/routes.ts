@@ -1,7 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: '', redirectTo: 'abstracts', pathMatch: 'full' },
     { path: 'about', loadChildren: 'client/modules/about/about.module#AboutModule' },
     { path: 'home', loadChildren: 'client/modules/home/home.module#HomeModule' },
     { path: 'abstracts', loadChildren: 'client/modules/abstracts/abstracts.module#AbstractsModule' },

@@ -2,15 +2,17 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from "@angular/http";
 
-import { AbstractsComponent } from "./abstracts.component";
 import { routing } from "./abstracts.routing";
+// import { AbstractsService } from './abstracts.service';
 
+import { AbstractsComponent } from "./abstracts.component";
 
 @NgModule({
     imports: [
         BrowserModule,
         HttpModule,
-        routing,        
+        routing,
+        // AbstractsService        
     ],
     declarations: [ AbstractsComponent ],
     bootstrap:    [ AbstractsComponent ]
