@@ -8,7 +8,8 @@ import * as mongoose from "mongoose";
 
 import { loginRouter } from "./routes/login";
 import { protectedRouter } from "./routes/protected";
-import { userRouter } from './routes/mongo';
+import { abstractsRouter } from './routes/abstracts';
+import { userRouter } from './routes/user';
 
 const app: express.Application = express();
 mongoose.connect('localhost:27017/conf');
@@ -21,7 +22,8 @@ app.use(json());
 app.use(urlencoded({ extended: false }));
 
 // api routes
-app.use("/mongo", userRouter);
+app.use("/user", userRouter);
+app.use("/abstracts", abstractsRouter);
 // app.use("/api", protectedRouter);
 // app.use("/login", loginRouter);
 

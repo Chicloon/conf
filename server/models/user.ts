@@ -13,6 +13,6 @@ let schema = new Schema({
 
 schema.plugin(mongooseUniqueValidator);
 
-let User = mongoose.model('User', schema);
+export let User = mongoose.model('User', schema);
 
-export = User;
+// export = User;
