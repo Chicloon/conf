@@ -1,9 +1,9 @@
 import { Routes, RouterModule } from '@angular/router';
 
-import { HomeComponent } from './home.component';
+import { SubmitAbstractComponent } from './submit-abstract.component';
 
 export const routes: Routes = [
-    { path: '', component: HomeComponent }
+    { path: '', component: SubmitAbstractComponent }
 ];
 
 export const routing = RouterModule.forChild(routes);
