@@ -1,31 +1,27 @@
 import { Component, OnInit } from "@angular/core";
 
 import { Abstract } from './abstract';
-// import { AbstractsService } from './abstracts.service';
+import { AbstractsService } from './abstracts.service';
 
 @Component({
     selector: "my-abstracts-component",
     templateUrl: `client/modules/abstracts/abstracts.component.html`
 })
 export class AbstractsComponent implements OnInit {
-    // constructor(private abstractsService: AbstractsService) { }
+    constructor(private _AbstractsService: AbstractsService) { }
 
-    abstracts: Abstract;
+    abstracts: Abstract[];
 
-    ngOnInit() { 
-        this.abstracts = {
-            title: 'Titile from component',
-            content: 'Content from component',
-            createdBy: 'Me'
-          };
+    ngOnInit() {
+        this.getAbstracts(); 
     }
 
-    // getAbstracts() {
-    //     this.abstractsService.getAbstracts()
-    //         .subscribe(
-    //         abstract => {
-    //             console.log(abstract);
-    //         });
-    // }
-
+    getAbstracts() {
+        this._AbstractsService.getAbstracts()
+            .subscribe(
+            abstract => {
+                console.log(abstract);
+                this.abstracts = abstract;
+            });
+    }
 }

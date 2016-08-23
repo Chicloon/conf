@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from "@angular/http";
 
 import { routing } from "./abstracts.routing";
-// import { AbstractsService } from './abstracts.service';
+import { AbstractsService } from './abstracts.service';
 
 import { AbstractsComponent } from "./abstracts.component";
 
@@ -11,9 +11,9 @@ import { AbstractsComponent } from "./abstracts.component";
     imports: [
         BrowserModule,
         HttpModule,
-        routing,
-        // AbstractsService        
+        routing,                
     ],
+    providers: [AbstractsService], 
     declarations: [ AbstractsComponent ],
     bootstrap:    [ AbstractsComponent ]
 })

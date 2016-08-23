@@ -43,6 +43,7 @@ abstractsRouter.get('/', function (req: Request, res: Response, next: NextFuncti
                     obj: docs
                 });
 
+     }
     });
 
 

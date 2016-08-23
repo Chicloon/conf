@@ -8,19 +8,20 @@ import { Abstract } from './abstract';
 @Injectable()
 
 export class AbstractsService {
-    abstracts: Abstract[] = [];
+    private abstracts;
+    private url = 'https://jsonplaceholder.typicode.com/posts';
+    
 
-    constructor(private http: Http) { }
+    constructor(private _http: Http) { }
 
-    getAbstracts() {
-        return this.http.get('http://localhost:3000/abstracts')
-            .map(this.extractData)
-            .catch(this.handleError);
+    getAbstracts(): Observable<Abstract[]> {
+        return this._http.get(this.url)
+            .map(res => res.json());
     }
 
   private extractData(res: Response) {
     let body = res.json();
-    return body.data || { };
+    return body || { };
   }
     private handleError(error: any) {
         // In a real world app, we might use a remote logging infrastructure
