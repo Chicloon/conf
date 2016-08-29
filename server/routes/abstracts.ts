@@ -19,10 +19,11 @@ abstractsRouter.get('/', function (req: Request, res: Response, next: NextFuncti
         if (!docs[0]) {
             console.log('No entries found. Adding starter entry');
             let abstract = new Abstract({
+                author: "Dummy Author",
                 title: "This is a Titile of abstract",
                 content: "This is a content of Abstract",
                 createdAt: new Date(),
-                // createdBy: 'Dummy User'
+                createdBy: 'Dummy User'
             });            
             abstract.save(function (err, result) {
                 if (err) {
@@ -33,7 +34,7 @@ abstractsRouter.get('/', function (req: Request, res: Response, next: NextFuncti
                 }
                 res.status(201).json({
                     message: 'Saved message',
-                    obj: result
+                    obj: [result]
                 });                
             });
         } else {
@@ -45,17 +46,6 @@ abstractsRouter.get('/', function (req: Request, res: Response, next: NextFuncti
 
      }
     });
-
-
-    // Abstract.find(function(err, docs){
-    //     if (err) {
-    //         return console.error(err)
-    //     }
-    //     console.log(docs);
-    //     console.log('first document', docs[0]);
-    // })
-
-
 });
 
 export {abstractsRouter}

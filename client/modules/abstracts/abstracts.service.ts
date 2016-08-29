@@ -8,15 +8,29 @@ import { Abstract } from './abstract';
 @Injectable()
 
 export class AbstractsService {
-    private abstracts;
-    private url = 'https://jsonplaceholder.typicode.com/posts';
+    // private abstracts;
+    private url = 'http://localhost:3000/abstracts';
     
 
     constructor(private _http: Http) { }
 
     getAbstracts(): Observable<Abstract[]> {
         return this._http.get(this.url)
-            .map(res => res.json());
+            .map(res => {
+                console.log (res.json());
+                console.log(res.json().obj);
+                return res.json().obj;
+
+            })
+            .catch(error => Observable.throw(error.json()));
+    }
+
+    editAbstract(abstract: Abstract) {
+        console.log(abstract);
+    }
+
+    deleteAbstract (abstract: Abstract) {
+        console.log(abstract);
     }
 
   private extractData(res: Response) {

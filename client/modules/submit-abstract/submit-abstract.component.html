@@ -1,3 +1,18 @@
-<div class="">
-    <h1>Hello from Submit abstracts component</h1>
-</div>
+Hello from Submit abstracts component
+<form (ngSubmit)="onSubmit()" [formGroup]="form" >
+    {{diagnostic}}
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" formControlName="title" #spy placeholder="Enter title here">
+        <br>
+        {{spy.className}}
+    </div>
+    <div class="form-group">
+        <label for="content">Content</label>
+        <input type="text" class="form-control" id="content" name="content" formControlName="content">
+         <p *ngIf="form.controls.content.errors"> Content is required </p>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<input type="search" [formControl]="searchControl">

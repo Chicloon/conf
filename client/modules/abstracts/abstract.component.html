@@ -1,0 +1,20 @@
+Hello from AbstractComponent
+
+<article class="panel panel-default">
+    <div class="panel-body">
+        Abstract's title is: 
+        {{ abstract.title }}
+    </div>
+    <div class="">
+        Abstract's content is:
+        {{ abstract.content }} 
+    </div>
+    <div class="">
+        Created at: 
+        {{ abstract.createdAt }}
+    </div>
+      <div class="config">
+            <a (click)="onEdit()">Edit</a>
+            <a (click)="onDelete()">Delete</a>
+        </div>    
+</article>

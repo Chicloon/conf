@@ -1,5 +1,9 @@
 export interface Abstract {
-    title: string;
-    content: string;
-    // createdBy: string; 
+    
+    author: string,
+    title: string,
+    content: string,
+    createdBy?: string,
+    crastedAt?: string   
 }
+
