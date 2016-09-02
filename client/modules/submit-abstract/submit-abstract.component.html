@@ -1,24 +1,32 @@
 Hello from Submit abstracts component
-<form (ngSubmit)="onSubmit()" [formGroup]="form" >
+<form (ngSubmit)="onSubmit()" [formGroup]="form" id="abstract-form">
     {{diagnostic}}
     <div class="form-group">
         <label for="title">Title</label>
         <input type="text" class="form-control" id="title" formControlName="title" #spy placeholder="Enter title here">
-        <br>
-        {{spy.className}}
+        <br> {{spy.className}}
+    </div>
+    <div class="form-group">
+        <label for="author">author</label>
+        <input type="text" class="form-control" id="author" formControlName="author" placeholder="Enter author here">
     </div>
     <div class="form-group">
         <label for="section">Section</label>
-        <input type="text" class="form-control" id="section" name="section" formControlName="section">
-         <p *ngIf="form.controls.content.errors"> Content is required </p>
+        <select form="abstract-form" class="form-control" id="section" name="section" formControlName="section">
+            <option value="chemistry">Chemistry</option>
+            <option value="physics">Physics</option>
+            <option value="mathematics">Mathematics</option>
+            <option value="biology">Biology</option>
+        </select>
+        <p *ngIf="content.invalid"> Content is required </p>
     </div>
-    
+
     <div class="form-group">
         <label for="content">Content</label>
-        <textarea rows="10" placeholder="Abstract's content" class="form-control" [formControl]="content" name="content" id="content" (focus)="inFocus()"  (blur)="lostFocus()">Content </textarea>        
-         <p *ngIf="searchfieldCharactersCounter" class="inputfield-info" [ngClass]="{'red': trigger }"><span>{{searchfieldCharactersCounter}} </span> characters </p>
+        <textarea rows="10" placeholder="Abstract's content" class="form-control" [formControl]="content" name="content" id="content"
+            (focus)="inFocus()" (blur)="lostFocus()">Content </textarea>
+        <p *ngIf="searchfieldCharactersCounter" class="inputfield-info" [ngClass]="{'red': trigger }"><span>{{searchfieldCharactersCounter}} </span> characters </p>
     </div>
-    <button *ngIf="form.valid"  type="submit" class="btn btn-primary">Submit</button>
+    <button *ngIf="form.valid" type="submit" class="btn btn-primary">Submit</button>
 
 </form>
-

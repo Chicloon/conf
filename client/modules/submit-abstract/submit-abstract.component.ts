@@ -14,17 +14,16 @@ import { AbstractsService } from '../abstracts/abstracts.service';
     directives: [NgClass]
 })
 export class SubmitAbstractComponent implements OnInit {
-    form: FormGroup;
-    private searchfieldCharactersCounter = 0;
-
-    private title = new FormControl('', Validators.compose([Validators.pattern('^[a-zA-Z0-9_ ]*$'),Validators.required]));
     
-    private content = new FormControl('',Validators.compose([Validators.pattern('^[a-zA-Z0-9_ ]*$'),Validators.required]));
-    // private content = new FormControl();
-    private section = new FormControl();
+    // Form fields variables
+    private form: FormGroup;
+    private title = new FormControl('', Validators.compose([Validators.pattern('^[a-zA-Z0-9_ ]*$'),Validators.required]));
+    private author = new FormControl('', Validators.required)
+    private content = new FormControl('',Validators.compose([Validators.pattern('^[a-zA-Z0-9_ ]*$'),Validators.required, Validators.minLength(10), Validators.maxLength(500)]));
+    private section = new FormControl('', Validators.required);
 
     private trigger:Boolean = false;
-
+    private searchfieldCharactersCounter = 0;
     
     constructor(private _abstracts: AbstractsService, private formBuilder: FormBuilder) { }
 
@@ -34,10 +33,11 @@ export class SubmitAbstractComponent implements OnInit {
         this.form = this.formBuilder.group({
             title: this.title,
             content: this.content,
-            section: this.section
+            section: this.section,
+            author: this.author
         });
         this.content.valueChanges.subscribe (value => this.contentfieldValidation(value));
-        // this.form.valueChanges.subscribe(() => console.log(this.form.valid));
+        
 
         console.log(this.form.controls);
         console.log(this.form.invalid); 
@@ -69,6 +69,6 @@ export class SubmitAbstractComponent implements OnInit {
     
     onSubmit() {
         console.log('Form submitted');
-        console.log(this.form, this.form.value, this.form.valid);
+        console.log('The form ' , this.form, '\n The value', this.form.value);
     }
 }
