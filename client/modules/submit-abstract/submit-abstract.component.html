@@ -15,8 +15,8 @@ Hello from Submit abstracts component
     
     <div class="form-group">
         <label for="content">Content</label>
-        <input type="text" class="form-control" formControlName="content" name="content" id="content" >
-         <p *ngIf="searchfieldCharactersCounter" class="inputfield-info" > U have entered <span>{{searchfieldCharactersCounter}}</span> characters </p>
+        <textarea rows="10" placeholder="Abstract's content" class="form-control" [formControl]="content" name="content" id="content" (focus)="inFocus()"  (blur)="lostFocus()">Content </textarea>        
+         <p *ngIf="searchfieldCharactersCounter" class="inputfield-info" [ngClass]="{'red': trigger }"><span>{{searchfieldCharactersCounter}} </span> characters </p>
     </div>
     <button *ngIf="form.valid"  type="submit" class="btn btn-primary">Submit</button>
 
