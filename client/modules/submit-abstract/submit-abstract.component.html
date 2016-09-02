@@ -8,11 +8,17 @@ Hello from Submit abstracts component
         {{spy.className}}
     </div>
     <div class="form-group">
-        <label for="content">Content</label>
-        <input type="text" class="form-control" id="content" name="content" formControlName="content">
+        <label for="section">Section</label>
+        <input type="text" class="form-control" id="section" name="section" formControlName="section">
          <p *ngIf="form.controls.content.errors"> Content is required </p>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    
+    <div class="form-group">
+        <label for="content">Content</label>
+        <input type="text" class="form-control" formControlName="content" name="content" id="content" >
+         <p *ngIf="searchfieldCharactersCounter" class="inputfield-info" > U have entered <span>{{searchfieldCharactersCounter}}</span> characters </p>
+    </div>
+    <button *ngIf="form.valid"  type="submit" class="btn btn-primary">Submit</button>
+
 </form>
 
-<input type="search" [formControl]="searchControl">

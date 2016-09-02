@@ -7,19 +7,16 @@ import { AbstractsService } from '../abstracts/abstracts.service';
 
 @Component({
     selector: "my-submit-abstract-component",
-    templateUrl: `client/modules/submit-abstract/submit-abstract.component.html`
+    templateUrl: `client/modules/submit-abstract/submit-abstract.component.html`,
+    styleUrls:['client/modules/submit-abstract/submit-abstract.component.css']
 })
 export class SubmitAbstractComponent implements OnInit {
     form: FormGroup;
-    searchControl = new FormControl();
+    private searchfieldCharactersCounter = 0;
 
-    // form = new FormGroup({
-    //     title: new FormControl(),
-    //     content: new FormControl()
-    // });
-
-    title = new FormControl('this is a title');
-    content = new FormControl();
+    private title = new FormControl('',Validators.required);
+    private content = new FormControl();
+    private section = new FormControl();
     constructor(private _abstracts: AbstractsService, private formBuilder: FormBuilder) { }
 
 
@@ -30,26 +27,30 @@ export class SubmitAbstractComponent implements OnInit {
         //  });
         this.form = this.formBuilder.group({
             title: this.title,
-            content: this.content
+            content: this.content,
+            section: this.section
         });
-        this.searchControl.valueChanges.subscribe (value => {
-            console.log(value);
-            console.log(this.form.valid);
-            if (value === 'test') {
-                this.searchControl.reset();
-                // this.form.valid = false;
-                this.form.controls.title.setValue('test');
-                
-            }
-        });
+        this.content.valueChanges.subscribe (value => this.contentfieldValidation(value) );
 
         console.log(this.form.controls);
+        console.log(this.form.invalid);
         // console.log (this.form.controls.title.value); 
         console.log(this.title.value);
     }
 
+    contentfieldValidation(value) {
+         console.log(value);
+            console.log(this.form.valid);
+            this.searchfieldCharactersCounter = value.length;
+            if (value === 'test') {
+                this.title.reset();
+                this.form.invalid;
+                this.title.setValue('test');
+                
+            }
+            this.title.setValue('this is a title')
+    }
     
-
     onSubmit() {
         console.log('Form submitted');
         console.log(this.form, this.form.value, this.form.valid);
