@@ -25,36 +25,23 @@ export class SubmitAbstractComponent implements OnInit {
     private trigger:Boolean = false;
     private searchfieldCharactersCounter = 0;
     
-    constructor(private _abstracts: AbstractsService, private formBuilder: FormBuilder) { }
+    constructor(private _abstractsService: AbstractsService, private formBuilder: FormBuilder) { }
 
 
     ngOnInit(){
         
         this.form = this.formBuilder.group({
             title: this.title,
-            content: this.content,
             section: this.section,
-            author: this.author
+            author: this.author,
+            content: this.content
         });
-        this.content.valueChanges.subscribe (value => this.contentfieldValidation(value));
+    
         
 
         console.log(this.form.controls);
         console.log(this.form.invalid); 
         console.log(this.title.value);
-    }
-
-    contentfieldValidation(value) {
-         console.log(value);
-            console.log(this.form.valid);
-            this.searchfieldCharactersCounter = value.length;
-            if (value === 'test') {
-                this.title.reset();
-                this.form.invalid;
-                this.title.setValue('test');
-                
-            }
-            this.form.valid;
     }
 
     lostFocus (value) {
@@ -67,8 +54,16 @@ export class SubmitAbstractComponent implements OnInit {
         this.trigger = false;
     }
     
-    onSubmit() {
-        console.log('Form submitted');
-        console.log('The form ' , this.form, '\n The value', this.form.value);
+    onSubmit(value: Abstract) {
+        console.log (value);
+        const abstract: Abstract = new Abstract (value.author, value.title, value.content, value.section);
+        this._abstractsService.addAbstract(abstract)
+            .subscribe(
+                data => {
+                    console.log(data);
+                    this._abstractsService.abstracts.push(data);
+                },
+                error => console.log(error)
+            );
     }
 }

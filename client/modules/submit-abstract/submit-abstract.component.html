@@ -1,5 +1,5 @@
 Hello from Submit abstracts component
-<form (ngSubmit)="onSubmit()" [formGroup]="form" id="abstract-form">
+<form (ngSubmit)="onSubmit(form.value)" [formGroup]="form" id="abstract-form">
     {{diagnostic}}
     <div class="form-group">
         <label for="title">Title</label>
@@ -25,7 +25,7 @@ Hello from Submit abstracts component
         <label for="content">Content</label>
         <textarea #textarea rows="10" placeholder="Abstract's content" class="form-control" [formControl]="content" name="content" id="content"
             (focus)="inFocus()" (blur)="lostFocus(textarea)">Content </textarea>
-        <p *ngIf="searchfieldCharactersCounter" class="inputfield-info" [ngClass]="{'red': trigger }"><span>{{searchfieldCharactersCounter}} </span> characters </p>
+        <p *ngIf="searchfieldCharactersCounter" class="inputfield-info" [ngClass]="{'red': trigger }"><span> {{textarea.value.length}} </span> characters </p>
     </div>
     <button *ngIf="form.valid" type="submit" class="btn btn-primary">Submit</button>
 

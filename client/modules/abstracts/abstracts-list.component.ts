@@ -21,9 +21,9 @@ export class AbstractsListComponent implements OnInit {
     getAbstracts() {
         this._abstracts.getAbstracts()
             .subscribe(
-            abstract => {
-                console.log(abstract);
+            abstract => {                
                 this.abstracts = abstract;
+                this._abstracts.abstracts = abstract;
             });
     }
 

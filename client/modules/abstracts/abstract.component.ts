@@ -18,6 +18,10 @@ export class AbstractComponent {
     }
 
     onDelete() {
-        this._abstracts.deleteAbstract(this.abstract);
+        this._abstracts.deleteAbstract(this.abstract)            
+           .subscribe(
+                data => console.log(data),
+                error => console.error (error)
+            );
     }
 }

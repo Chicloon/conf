@@ -9,7 +9,7 @@ let schema = new Schema({
     title: { type: String, required: true},
     content: {type: String, required: true },
     createdBy: [{ type: Schema.Types.ObjectId, ref: 'User'}],
-    createdAt: {type: Date}
+    createdAt: {type: Date},
 });
 
 schema.plugin(mongooseUniqueValidator);
