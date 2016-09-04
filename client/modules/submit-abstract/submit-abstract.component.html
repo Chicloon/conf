@@ -23,8 +23,8 @@ Hello from Submit abstracts component
 
     <div class="form-group">
         <label for="content">Content</label>
-        <textarea rows="10" placeholder="Abstract's content" class="form-control" [formControl]="content" name="content" id="content"
-            (focus)="inFocus()" (blur)="lostFocus()">Content </textarea>
+        <textarea #textarea rows="10" placeholder="Abstract's content" class="form-control" [formControl]="content" name="content" id="content"
+            (focus)="inFocus()" (blur)="lostFocus(textarea)">Content </textarea>
         <p *ngIf="searchfieldCharactersCounter" class="inputfield-info" [ngClass]="{'red': trigger }"><span>{{searchfieldCharactersCounter}} </span> characters </p>
     </div>
     <button *ngIf="form.valid" type="submit" class="btn btn-primary">Submit</button>

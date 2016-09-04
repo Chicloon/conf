@@ -2,19 +2,16 @@ Hello from AbstractComponent
 
 <article class="panel panel-default">
     <div class="panel-body">
-        Abstract's title is: 
-        {{ abstract.title }}
-    </div>
-    <div class="">
-        Abstract's content is:
-        {{ abstract.content }} 
-    </div>
-    <div class="">
-        Created at: 
-        {{ abstract.createdAt }}
-    </div>
-      <div class="config">
+        <h3>Abstract's title is: {{ abstract.title }}
+        </h3>
+        <h4> Abstract's section is: {{ abstract.section }}
+        </h4>
+        <h4> Abstract's author is: {{ abstract.author }}
+        </h4>
+        <p> Abstract's content is: {{ abstract.content }} </p>
+        <div class="config">
             <a (click)="onEdit()">Edit</a>
             <a (click)="onDelete()">Delete</a>
-        </div>    
+        </div>
+    </div>
 </article>

@@ -57,13 +57,13 @@ export class SubmitAbstractComponent implements OnInit {
             this.form.valid;
     }
 
-    lostFocus () {
-        if (this.searchfieldCharactersCounter < 10) {
+    lostFocus (value) {
+        if (value < 10 && value > 500) {
             this.trigger = true;
         }               
     }
 
-    inFocus () {
+    inFocus () {        
         this.trigger = false;
     }
     
