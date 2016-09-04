@@ -12,8 +12,11 @@ import { abstractsRouter } from './routes/abstracts';
 import { userRouter } from './routes/user';
 
 const app: express.Application = express();
-mongoose.connect('localhost:27017/conf');
-// app.disable("x-powered-by");
+
+ 
+
+// mongoose.connect('localhost:27017/conf'); //local database
+mongoose.connect('mongodb://user:user@ds013014.mlab.com:13014/chicloon'); //remote database   
 
 app.use(favicon(join(__dirname, "../public", "favicon.ico")));
 app.use(express.static(join(__dirname, '../public')));
